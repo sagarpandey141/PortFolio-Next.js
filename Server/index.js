@@ -5,12 +5,13 @@ let Port=4000;
 const bodyParser=require("body-parser")
 const { contacts } = require("./Controller/ContactUs");
 
+app.use(express.json());
 app.use(bodyParser.json());
 
 app.use(
     cors({
        
-            origin:"http://localhost:3000",
+            origin:true,
            
     })
 )
