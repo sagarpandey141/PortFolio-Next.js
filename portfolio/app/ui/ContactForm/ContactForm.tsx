@@ -1,4 +1,4 @@
-import React ,{useState} from 'react'
+import React ,{useState,FormEvent} from 'react'
 import "./contact.scss"
 import { toast } from 'react-hot-toast';
 
@@ -8,21 +8,21 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setProjectDetails] = useState('');
-  const BackendPort:string=process.env.Backend_Api
+  const BackendPort=process.env.Backend_Api || '4000'
   
-  const handleNameChange = (event ) => {
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement> ) => {
     setName(event.target.value);
   };
  
-  const handleEmailChange = (event) => {
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
-  const handleProjectDetailsChange = (event) => {
+  const handleProjectDetailsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setProjectDetails(event.target.value);
   };
 
- async function  contactUs(event){
+  const contactUs = async (event: FormEvent<HTMLFormElement>) => {
   event.preventDefault();
   const toastid=toast.loading("Sending Your Message")
       

@@ -3,13 +3,13 @@ import "../globals.css"
 import "./Hero.css"
 import {MdOutlineMailOutline,MdOutlineFileDownload  } from "react-icons/md"
 import {FaCloudDownloadAlt} from "react-icons/fa"
-import resume from "../lib/SagarResume.pdf"
+
 import Link from 'next/link'
 import Contact from './Contact'
 
 const Hero = () => {
 
-  
+  const resume='/SagarResume.pdf'
   return (
    
     <div className='bgimage1 h-[46rem] hero' id='hero'>

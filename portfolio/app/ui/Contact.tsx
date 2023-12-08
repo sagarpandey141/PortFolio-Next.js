@@ -12,21 +12,22 @@ const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setProjectDetails] = useState('');
-  const BackendPort="http://localhost:4000/api/v1/contact"
+
   
-  const handleNameChange = (event ) => {
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
+  
  
-  const handleEmailChange = (event) => {
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
-  const handleProjectDetailsChange = (event) => {
+  const handleProjectDetailsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setProjectDetails(event.target.value);
   };
 
- async function  contactUs(event){
+ async function  contactUs(event: React.ChangeEvent<HTMLInputElement>){
   event.preventDefault();
   const toastid=toast.loading("Sending Your Message")
       
@@ -51,7 +52,7 @@ const Contact = () => {
   return (
     <div className=' bg-[#000000]  flex justify-around gap-20   h-[33rem]' id='contact'>
               <div className=' mt-20 '>
-                <p className=' text-6xl font-bold max-w-[5%]'>Let's Connect</p>
+                <p className=' text-6xl font-bold max-w-[5%]'>Let&apos; s Connect</p>
                  <div className='flex gap-4 text-4xl  mt-[5%]'>
                  <FaReact />
                  <FaNodeJs />
