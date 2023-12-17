@@ -3,10 +3,8 @@ const nodemamailSender = require("./Mailsender");
 
 
 exports.contacts=async(req,res)=>{
-    console.log("req",req.body)
    try{
     const{email,name,message}=req.body;
-    console.log("first",email,name)
     const response=await  nodemamailSender(
        email,
        "Message Sent We Will Contact You Soon",
@@ -20,7 +18,7 @@ exports.contacts=async(req,res)=>{
     }
     return res.json({
         success:200,
-        message:"Tast Mail Send Done"
+        message:"Task Mail Send Done"
     })
    }  catch(error){
         console.log("error",error)

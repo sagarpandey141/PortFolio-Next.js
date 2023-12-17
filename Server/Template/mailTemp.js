@@ -2,7 +2,7 @@ exports.contactUsEmail = (
     email,
     name,
     Message,
-
+   subjects
   ) => {
     return `<!DOCTYPE html>
     <html>
@@ -81,7 +81,7 @@ exports.contactUsEmail = (
                 <p>Here are the details you provided:</p>
                 <p>Name: ${name} </p>
                 <p>Email: ${email}</p>
-                
+                 <p>Subject: ${subjects}</p>
                 <p>Message: ${Message}</p>
                 <p>We appreciate your interest and will get back to you shortly. </p>
             </div>

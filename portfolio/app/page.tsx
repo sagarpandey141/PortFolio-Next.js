@@ -11,7 +11,7 @@ import { Toaster } from 'react-hot-toast';
 const Home = () => {
 
   return (
-    <div className='  overflow-hidden'>
+    <div className='  overflow-hidden text-white'>
          <Hero/>
          <Experience/>
          <Client/>

@@ -1,3 +1,51 @@
 .bgimage1{
    background-image: url("../../public//WhatsApp\ Image\ 2023-12-05\ at\ 22.04.05.jpeg");
 }
+
+.dropdown {
+   max-width: 13em;
+   margin: 13px auto 0;
+   position: relative;
+   width: 100%;
+   margin-left: 15rem;
+ }
+ .dropdown-btn {
+   background: #fff;
+   font-size: 18px;
+   width: 100%;
+   border: none;
+   color: #1d1f24;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0.7em 0.5em;
+   border-radius: 0.5em;
+   cursor: pointer;
+ }
+ .arrow {
+   border-left: 5px solid transparent;
+   border-right: 5px solid transparent;
+   border-top: 6px solid #1d1f24;
+   transition: transform ease-in-out 0.3s;
+ }
+ .dropdown-content {
+   list-style: none;
+   position: absolute;
+   top: 3.2em;
+   width: 100%;
+ }
+ .dropdown-content li {
+   background: #fff;
+    color: #1d1f24;
+   border-radius: 0.5em;
+ }
+ .dropdown-content li:hover {
+  
+ }
+ .dropdown-content li a {
+   display: block;
+   padding: 0.7em 0.5em;
+   color: #1d1f24;
+   margin: 0.1em 0;
+   text-decoration: none;
+ }

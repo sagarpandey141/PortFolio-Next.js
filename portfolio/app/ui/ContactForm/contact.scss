@@ -1,170 +1,96 @@
-$white: rgba(255,255,255,0.3);
-
-body {
-  background: linear-gradient(45deg, #FC466B, #3F5EFB);
-  height: 100vh;
-  font-family: 'Montserrat', sans-serif;
+.input {
+	
+	// needs to be relative so the :focus span is positioned correctly
+	position:relative;
+	
+	// bigger font size for demo purposes
+	font-size: 1.5em;
+	
+	// the border gradient
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	
+	// the width of the input border
+	padding: 5px;
+	
+	// we want inline fields by default
+	display: inline-block;
+	
+	// we want rounded corners no matter the size of the field
+	border-radius: 9999em;
+	
+	// style of the actual input field
+	*:not(span) {
+		position: relative;
+		display: inherit;
+		border-radius: inherit;
+		margin: 0;
+		border: none;
+		outline: none;
+		padding: 0 .325em;
+		z-index: 1; // needs to be above the :focus span
+		
+		// summon fancy shadow styles when focussed
+		&:focus + span {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+	
+	// we don't animate box-shadow directly as that can't be done on the GPU, only animate opacity and transform for high performance animations.
+	span {
+		
+		transform: scale(.993, .94); // scale it down just a little bit
+		transition: transform .5s, opacity .25s;
+		opacity: 0; // is hidden by default
+		
+		position:absolute;
+		z-index: 0; // needs to be below the field (would block input otherwise)
+		margin:4px; // a bit bigger than .input padding, this prevents background color pixels shining through
+		left:0;
+		top:0;
+		right:0;
+		bottom:0;
+		border-radius: inherit;
+		pointer-events: none; // this allows the user to click through this element, as the shadow is rather wide it might overlap with other fields and we don't want to block those.
+		
+		// fancy shadow styles
+		box-shadow: inset 0 0 0 3px #fff,
+			0 0 0 4px #fff,
+			3px -3px 30px #1beabd, 
+			-3px 3px 30px #10abff;
+	}
+	
 }
 
-.container {
-  position: absolute;
-  transform: translate(-60%,-10%);
- 
-//   top: 50%;
-//   left: 50%;
+html {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	line-height:1.5;
+	font-size:1em;
 }
 
-form {
-  background: $white;
-  
-  width: 30rem;
-  padding: 3em;
-  height: 30rem;
-  border-radius: 20px;
-  border-left: 1px solid $white;
-  border-top: 1px solid $white;
-  backdrop-filter: blur(10px);
-  box-shadow: 20px 20px 40px -6px rgba(0,0,0,0.2);
-  text-align: center;
-  position: relative;
-  transition: all 0.2s ease-in-out;
-  
-  
-  p {
-    font-weight: 500;
-    color: #fff;
-    opacity: 0.7;
-    font-size: 1.4rem;
-    margin-top: 0;
-    margin-bottom: 60px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-  }
-  
-  a {
-    text-decoration: none;
-    color: #ddd;
-    font-size: 12px;
-    
-    &:hover {
-      text-shadow: 2px 2px 6px #00000040;
-    }
-    
-    &:active {
-      text-shadow: none;
-    }
-  }
-  
-  input {
-    background: transparent;
-    width: 200px;
-    padding: 1em;
-    margin-bottom: 2em;
-    border: none;
-    border-left: 1px solid $white;
-    border-top: 1px solid $white;
-    border-radius: 5000px;
-    backdrop-filter: blur(5px);
-    box-shadow: 4px 4px 60px rgba(0,0,0,0.2);
-    color: #fff;
-    font-family: Montserrat, sans-serif;
-    font-weight: 500;
-    transition: all 0.2s ease-in-out;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    
-    &:hover {
-      background: rgba(255,255,255,0.1);
-      box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);
-    }
-    
-    &[type="email"],
-    &[type="password"] {
-      
-      &:focus {
-        background: rgba(255,255,255,0.1);
-        box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);
-      }
-    }
-    
-    &[type="button"] {
-      margin-top: 10px;
-      width: 150px;
-      font-size: 1rem;
-      
-      &:hover {
-        cursor: pointer;
-      }
-      
-      &:active {
-        background: rgba(255,255,255,0.2);
-      }
-    }
-  }
-  
-  &:hover {
-    margin: 4px;
-  }
+
+html, body {
+	height:100%;
+}
+
+input {
+	font-family: inherit;
+	line-height:inherit;
+	color:#000000;
+	min-width:12em;
+  height: 2.5rem;
 }
 
 ::placeholder {
-  font-family: Montserrat, sans-serif;
-  font-weight: 400;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+	color:#cbd0d5;
 }
 
-.drop {
-  background: $white;
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  border-left: 1px solid $white;
-  border-top: 1px solid $white;
-  box-shadow: 10px 10px 60px -8px rgba(0,0,0,0.2);
-  position: absolute;
-  transition: all 0.2s ease;
-  
-  &-1 {
-    height: 80px;
-    width: 80px;
-    top: -20px;
-    left: -40px;
-    z-index: -1;
-  }
-  
-  &-2 {
-    height: 80px;
-    width: 80px;
-    bottom: -30px;
-    right: -20px;
-  }
-  
-  &-3 {
-    height: 100px;
-    width: 100px;
-    bottom: 120px;
-    right: -50px;
-    z-index: -1;
-  }
-  
-  &-4 {
-    height: 120px;
-    width: 120px;
-    top: -60px;
-    right: -60px;
-  }
-  
-  &-5 {
-    height: 60px;
-    width: 60px;
-    bottom: 18%;
-    left: 29%;
-    z-index: -1;
-  }
-}
-
-a,
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
+html::after {
+	content:'';
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	height:3px;
+	width:100%;
+	position:absolute;
+	left:0;
+	top:0;
 }
